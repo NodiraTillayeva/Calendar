@@ -1,0 +1,728 @@
+#include <iostream> 
+#include<string> //used for working with string variables
+#include<limits> //used for basic validation check
+using namespace std;
+string username, password, pass, name, text; //initializing global variables of string type
+int i, year, month, date, Feb, b, ych, mch, ymod, b1, b2;//initializing global variables of int type
+int main();
+void diary();
+void calendaryear();//Outputs calendar for the whole year
+void calendar();//Outputs calendar for certain month and date
+void calendarchoice();//Redirects user to main menu/back/closes program
+void textchoice()
+{//Redirects user to main menu/back
+	string chs;
+	cout << "                                                        To go back press [1]" << endl;
+	cout << "                                                      To go main menu press [2]" << endl;
+	do {
+		cin >> chs;
+		cout << "Enter valid key" << endl << ">>";
+	} while (chs != "1" && chs != "2");
+	if (chs == "1")
+	{
+		system("cls");
+		diary();
+	}
+	else
+	{
+		system("cls");
+		main();
+	}
+}
+void loop(int b, int Feb, int date)
+{//Loop for displaying a calendar for the whole year
+	if (b == 0)
+	{
+		b = 7;
+	}
+	for (int i = 1; i < b; i++)
+		cout << "\t";
+	for (int i = 1; i <= Feb; i++)
+	{
+		if (i == date)//for the certain date input it shows a "*" sign
+		{
+			cout << '*';
+		}
+		else
+		{
+			cout << i << "\t";
+			if ((b + i) % 7 == 1)
+				cout << endl;
+		}
+	}
+}
+void loopmonth(int b, int Feb, int date)
+{//Loop for displaying a calendar for the whole year
+	if (b == 0)
+	{
+		b = 7;
+	}
+	for (int i = 1; i < b; i++)
+		cout << "\t";
+	for (int i = 1; i <= Feb; i++)
+	{
+		if (i == date)
+		{
+			cout << '*';
+		}
+		cout << i << "\t";
+		if ((b + i) % 7 == 1)
+			cout << endl;
+	}
+}
+void calendarmenu()
+{//In this menu user can choose what type of calendar he/she wants to see
+	cout << endl << endl << endl;
+	string cmchoice;
+	cout << "________________________________________________________________________________________________________________________" << endl;
+	cout << "________________________________________________________________________________________________________________________" << endl;
+	cout << endl;
+	cout << "                                                       -  Calendar -                                                    " << endl << endl;
+	cout << "                                        Choose the type of a calendar you want to see                                   " << endl;
+
+	cout << "________________________________________________________________________________________________________________________" << endl;
+	cout << "________________________________________________________________________________________________________________________" << endl << endl << endl;
+	cout << "                                                      [1] Year calendar" << endl << endl;
+	cout << "                                                      [2] Monthly calendar" << endl;
+	do {
+		cout << "                                                            "; cin >> cmchoice;
+		cout << "You entered invalid number, please try again." << endl;
+		cout << ">>";
+	} while (cmchoice != "1" && cmchoice != "2");//Validation check
+	if (cmchoice == "1")
+	{
+		system("CLS");
+		cout << endl << endl << endl;
+		cout << "________________________________________________________________________________________________________________________" << endl;
+		cout << "________________________________________________________________________________________________________________________" << endl;
+		cout << endl;
+		cout << "                                                      -  CALENDAR -                                                     " << endl << endl;
+		cout << "                                       Here you can see all important days for the whole year!                            " << endl;
+		cout << "                                         Our calendar works from 1582-any year in the future                              " << endl;
+		cout << "                                        ***1582 year-the new calendar was implemented***                                  " << endl;
+		cout << "________________________________________________________________________________________________________________________" << endl;
+		cout << "________________________________________________________________________________________________________________________" << endl << endl << endl;
+		calendaryear();
+		string chs;
+		cout << "                                                    To see another date press [1]" << endl;
+		cout << "                                               To go back to the MAIN menu press[2]" << endl;
+		cout << "                                                    To quit the program press [3]" << endl;
+		cin >> chs;
+		while (chs != "1" && chs != "2" && chs != "3")//Validation check
+		{
+			cout << "Enter valid key" << endl << ">>";
+			cin >> chs;
+		}
+		if (chs == "1")
+		{
+			system("cls");
+			calendaryear();
+		}
+		else if (chs == "2")
+		{
+			system("cls");
+			diary();
+		}
+		else
+		{
+			system("cls");
+			main();
+		}
+	}
+
+	else
+	{
+		system("CLS");
+		cout << endl << endl << endl;
+		cout << "________________________________________________________________________________________________________________________" << endl;
+		cout << "________________________________________________________________________________________________________________________" << endl;
+		cout << endl;
+		cout << "                                                      -  CALENDAR -                                                     " << endl << endl;
+		cout << "                                    Here you can see all important days for the wlole month!                            " << endl;
+		cout << "                                       Our calendar works from 1582-any year in the future                              " << endl;
+		cout << "                                        ***1582 year-the new calendar was implemented***                                  " << endl;
+		cout << "________________________________________________________________________________________________________________________" << endl;
+		cout << "________________________________________________________________________________________________________________________" << endl << endl << endl;
+		calendar();
+		cout << "------------------------------------------------------------------------------------------------------------------------" << endl;
+		cout << endl;
+		cout << "                                                 -  Important events -                                                  " << endl << endl;
+		if (month == 1)
+		{
+			cout << "                                           1st January     |  New Year                            " << endl;
+			cout << "                                           14 nt January   |  Day of Defenders of the Motherland  " << endl;
+		}
+		if (month == 2)
+		{
+			cout << "                                             14th February |  Valentine's Day                     " << endl;
+			cout << "                                             14th February |  Muhammad Bobur's birthday           " << endl;
+		}
+		if (month == 3)
+		{
+			cout << "                                             8th March     |  International Women's Day           " << endl;
+			cout << "                                            21th March     |  Navruz           " << endl;
+		}
+		if (month == 4)
+		{
+			cout << "                                             1st April     |  April Fools           " << endl;
+			cout << "                                            12th April     |  Day of Human Space Flight           " << endl;
+		}
+		if (month == 5)
+		{
+			cout << "                                             9th   May     |  Rememberance Day           " << endl;
+		}
+		if (month == 6)
+		{
+			cout << "                                             1st   June    |  Children's Day           " << endl;
+		}
+		if (month == 9)
+		{
+			cout << "                                        1st   September    |  Independance Day           " << endl;
+		}
+		if (month == 10)
+		{
+			cout << "                                        1st   October      |  Teacher's Day          " << endl;
+			cout << "                                        21st   October     |  Uzbek Language Day          " << endl;
+		}
+		if (month == 11)
+		{
+			cout << "                                        18th   November    |  Declaration of National flag         " << endl;
+		}
+		if (month == 12)
+		{
+			cout << "                                        8th   December     |  Declaration of Constitution         " << endl;
+			cout << "                                       31st   December     |  New Year!         " << endl;
+		}
+		cout << endl << endl;
+		cout << "------------------------------------------------------------------------------------------------------------------------" << endl << endl << endl;
+		calendarchoice();
+	}
+}
+void calendar()
+{
+	cout << endl << endl;
+	cout << "Year:   ";
+	cin >> year;
+	while (!(year) || year < 1582)
+	{
+		// Clear errors (like the failbit flag)
+		cin.clear();
+
+		// Throw away the rest of the line
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+		cout << "Wrong input, please enter a number: ";
+		cin >> year;
+	}
+	ymod = year % 100;
+	if ((year % 4 == 0) || (year % 100 == 0) || (year % 400 == 0))
+	{
+		Feb = 29;
+	}
+	else
+	{
+		Feb = 28;
+	}
+	if ((year / 100) % 4 == 3)
+	{
+		ych = 0;
+	}
+	if ((year / 100) % 4 == 0)
+	{
+		ych = 6;
+	}
+	if ((year / 100) % 4 == 1)
+	{
+		ych = 4;
+	}
+	if ((year / 100) % 4 == 2)
+	{
+		ych = 2;
+	}
+
+	cout << "Month: ";
+	cin >> month;
+	while (!(month) || (month <= 0 || month > 12))
+	{
+		// Clear errors (like the failbit flag)
+		cin.clear();
+
+		// Throw away the rest of the line
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+		cout << "Wrong input, please enter a number: ";
+		cin >> month;
+	}
+	cout << "Day:  ";
+	cin >> date;
+	while (!(date) || (date <= 0 || date > 31))
+	{
+		// Clear errors (like the failbit flag)
+		cin.clear();
+
+		// Throw away the rest of the line
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+		cout << "Wrong input, please enter a number: ";
+		cin >> date;
+	}
+	system("cls");
+	//There is an algorithm to find out which day of the week the January the 1st will be.
+	//If we know it, we can create a loop for the whole year starting from specific day of the week(b).
+	b1 = (ych + ymod + (ymod / 4)) % 7;
+	b2 = (1 + b1) % 7;
+	if (Feb == 29)
+	{
+		b2 = b2;
+	}
+	if (Feb == 28)
+	{
+		b2 = b2 + 1;
+	}
+
+	if (b2 == 0 || b2 == 7)
+	{
+		b = 6;
+	}
+	if (b2 == 1)
+	{
+		b = 7;
+	}
+	if (b2 == 2)
+	{
+		b = 1;
+	}
+	if (b2 == 3)
+	{
+		b = 2;
+	}
+	if (b2 == 4)
+	{
+		b = 3;
+	}
+	if (b2 == 5)
+	{
+		b = 4;
+	}
+	if (b2 == 6)
+	{
+		b = 5;
+	}
+	cout << "________________________________________________________________________________________________________________________" << endl << endl;
+	cout << "                                                        - " << date << " / " << month << " / " << year << "  -                          " << endl;
+	cout << "________________________________________________________________________________________________________________________" << endl << endl << endl;
+	if (month == 1)
+	{
+		cout << "January" << endl << "__________________________________________________" << endl;
+		cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+		loopmonth(b, 31, date);
+	}
+	b = (b + 31) % 7;//identifying day of the week of the following month
+	if (month == 2)
+	{
+		cout << "                    February" << endl << "__________________________________________________" << endl;
+		cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+		loopmonth(b, Feb, date);
+	}
+	b = (b + Feb) % 7;
+	if (month == 3)
+	{
+		cout << "                     March" << endl << "__________________________________________________" << endl;
+		cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+		loopmonth(b, 31, date);
+	}
+	b = (b + 31) % 7;
+	if (month == 4)
+	{
+		cout << "                     April" << endl << "__________________________________________________" << endl;
+		cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+		loopmonth(b, 30, date);
+	}
+	b = (b + 30) % 7;
+	if (month == 5)
+	{
+		cout << "                     May" << endl << "__________________________________________________" << endl;
+		cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+		loopmonth(b, 31, date);
+	}
+	b = (b + 31) % 7;
+	if (month == 6)
+	{
+		cout << "                    June" << endl << "__________________________________________________" << endl;
+		cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+		loopmonth(b, 31, date);
+	}
+	b = (b + 30) % 7;
+	if (month == 7)
+	{
+		cout << "                     July" << endl << "__________________________________________________" << endl;
+		cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+		loopmonth(b, 31, date);
+	}
+	b = (b + 31) % 7;
+	if (month == 8)
+	{
+		cout << "                    August" << endl << "__________________________________________________" << endl;
+		cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+		loopmonth(b, 31, date);
+	}
+	b = (b + 31) % 7;
+	if (month == 9)
+	{
+
+		cout << "                     September" << endl << "__________________________________________________" << endl;
+		cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+		loopmonth(b, 30, date);
+	}
+	b = (b + 30) % 7;
+	if (month == 10)
+	{
+		cout << "                    October" << endl << "__________________________________________________" << endl;
+		cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+		loopmonth(b, 31, date);
+	}
+	b = (b + 31) % 7;
+	if (month == 11)
+	{
+		cout << "                     November" << endl << "__________________________________________________" << endl;
+		cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+		loopmonth(b, 30, date);
+	}
+	b = (b + 30) % 7;
+	if (month == 12)
+	{
+		cout << "                     December" << endl << "__________________________________________________" << endl;
+		cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+		loopmonth(b, 31, date);
+	}
+	cout << endl;
+}
+void calendarchoice()
+{//Redirects user to main menu/back/closes program
+	string chs;
+	cout << endl << endl << endl << endl;
+	cout << "                                            To go back to the MAIN press[1]" << endl;
+	cout << "                                             To quit the program press [2]" << endl;
+	cin >> chs;
+	while (chs != "1" && chs != "2")//Validation check
+	{
+		cout << "Enter valid key" << endl << ">>";
+		cin >> chs;
+	}
+	if (chs == "1")
+	{
+		system("cls");
+		diary();
+
+	}
+	else if (chs == "2")
+	{
+		system("cls");
+		main();
+	}
+}
+void calendaryear()
+{
+	cout << "Year:   ";
+	cin >> year;
+	while (!(year) || year < 1582)
+	{
+		// Clear errors (like the failbit flag)
+		cin.clear();
+
+		// Throw away the rest of the line
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+		cout << "Wrong input, please enter a number: ";
+		cin >> year;
+	}
+	ymod = year % 100;
+	if ((year % 4 == 0) || (year % 100 == 0) || (year % 400 == 0))
+	{
+		Feb = 29;
+	}
+	else
+	{
+		Feb = 28;
+	}
+	if ((year / 100) % 4 == 3)
+	{
+		ych = 0;
+	}
+	if ((year / 100) % 4 == 0)
+	{
+		ych = 6;
+	}
+	if ((year / 100) % 4 == 1)
+	{
+		ych = 4;
+	}
+	if ((year / 100) % 4 == 2)
+	{
+		ych = 2;
+	}
+	b1 = (ych + ymod + (ymod / 4)) % 7;
+	b2 = (1 + b1) % 7;
+	if (Feb == 29)
+	{
+		b2 = b2;
+	}
+	if (Feb == 28)
+	{
+		b2 = b2 + 1;
+	}
+
+	if (b2 == 0 || b2 == 7)
+	{
+		b = 6;
+	}
+	if (b2 == 1)
+	{
+		b = 7;
+	}
+	if (b2 == 2)
+	{
+		b = 1;
+	}
+	if (b2 == 3)
+	{
+		b = 2;
+	}
+	if (b2 == 4)
+	{
+		b = 3;
+	}
+	if (b2 == 5)
+	{
+		b = 4;
+	}
+	if (b2 == 6)
+	{
+		b = 5;
+	}
+	cout << "________________________________________________________________________________________________________________________" << endl << endl;
+	cout << "                                                        -     " << year << "  -                                          " << endl;
+	cout << "________________________________________________________________________________________________________________________" << endl << endl << endl;
+	cout << "                    January" << endl << "__________________________________________________" << endl;
+	cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+	loop(b, 31, 40);
+	cout << endl;
+	b = (b + 31) % 7;
+	cout << "                    February" << endl << "__________________________________________________" << endl;
+	cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+	loop(b, Feb, 40);
+	cout << endl;
+	b = (b + Feb) % 7;
+	cout << "                     March" << endl << "__________________________________________________" << endl;
+	cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+	loop(b, 31, 40);
+	cout << endl;
+	b = (b + 31) % 7;
+	cout << "                     April" << endl << "__________________________________________________" << endl;
+	cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+	loop(b, 30, 40);
+	cout << endl;
+	b = (b + 30) % 7;
+	cout << "                     May" << endl << "__________________________________________________" << endl;
+	cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+	loop(b, 31, 40);
+	cout << endl;
+	b = (b + 31) % 7;
+	cout << "                    June" << endl << "__________________________________________________" << endl;
+	cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+	loop(b, 31, 40);
+	cout << endl;
+	b = (b + 30) % 7;
+	cout << "                     July" << endl << "__________________________________________________" << endl;
+	cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+	loop(b, 31, 40);
+	cout << endl;
+	b = (b + 31) % 7;
+	cout << "                    August" << endl << "__________________________________________________" << endl;
+	cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+	loop(b, 31, 40);
+	cout << endl;
+	b = (b + 31) % 7;
+	cout << "                     September" << endl << "__________________________________________________" << endl;
+	cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+	loop(b, 30, 40);
+	cout << endl;
+	b = (b + 30) % 7;
+	cout << "                    October" << endl << "__________________________________________________" << endl;
+	cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+	loop(b, 31, 40);
+	cout << endl;
+	b = (b + 31) % 7;
+	cout << "                     November" << endl << "__________________________________________________" << endl;
+	cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+	loop(b, 30, 40);
+	cout << endl;
+	b = (b + 30) % 7;
+	cout << "                     December" << endl << "__________________________________________________" << endl;
+	cout << "M\tT\tW\tT\tF\tS\tS" << endl;
+	loop(b, 31, 40);
+	cout << endl;
+	cout << "------------------------------------------------------------------------------------------------------------------------" << endl;
+	cout << endl;
+	cout << "                                                 -  Important events -                                                  " << endl << endl;
+
+	cout << "                                           1st January     |  New Year                            " << endl;
+	cout << "                                           14 nt January   |  Day of Defenders of the Motherland  " << endl;
+	cout << "                                             14th February |  Valentine's Day                     " << endl;
+	cout << "                                             14th February |  Muhammad Bobur's birthday           " << endl;
+	cout << "                                             8th March     |  International Women's Day           " << endl;
+	cout << "                                            21th March     |  Navruz           " << endl;
+	cout << "                                             1st April     |  April Fools           " << endl;
+	cout << "                                            12th April     |  Day of Human Space Flight           " << endl;
+	cout << "                                             9th   May     |  Rememberance Day           " << endl;
+	cout << "                                             1st   June    |  Children's Day           " << endl;
+	cout << "                                        1st   September    |  Independance Day           " << endl;
+	cout << "                                        1st   October      |  Teacher's Day          " << endl;
+	cout << "                                        21st   October     |  Uzbek Language Day          " << endl;
+	cout << "                                        18th   November    |  Declaration of National flag         " << endl;
+	cout << "                                        8th   December     |  Declaration of Constitution         " << endl;
+	cout << "                                       31st   December     |  New Year!         " << endl << endl;
+	cout << "----------------------------------------------------------------------------------------------------------------------------" << endl << endl << endl;
+}
+void notes()
+{//Shows the latests notes
+	cout << endl << endl << endl;
+	cout << "________________________________________________________________________________________________________________________" << endl;
+	cout << "________________________________________________________________________________________________________________________" << endl << endl;
+	cout << "                                                             NOTES                                                    " << endl;
+	cout << "                                                        - " << date << " / " << month << " / " << year << "  -                          " << endl;
+	cout << "________________________________________________________________________________________________________________________" << endl;
+	cout << "________________________________________________________________________________________________________________________" << endl << endl << endl;
+	cout << "                                                 " << text << endl;
+}
+void diary()
+{//Main Diary Menu
+	cout << "________________________________________________________________________________________________________________________" << endl;
+	cout << "________________________________________________________________________________________________________________________" << endl;
+	cout << endl;
+	cout << "                                                       -  DIARY -                                                       " << endl << endl;
+	cout << "                                                     Welcome " << username << " !" << endl;
+	cout << "                             Here you can add new notes and see the last saved ones!                          " << endl << endl;
+	cout << "________________________________________________________________________________________________________________________" << endl;
+	cout << "________________________________________________________________________________________________________________________" << endl << endl << endl;
+
+	cout << "                                                        < MENU > " << endl << endl;
+	cout << "                                                 [1] Create new file " << endl;
+	cout << "                                                 [2] Read last file " << endl;
+	cout << "                                                 [3] Open calendar " << endl;
+	cout << "                                                 [4] Quit" << endl;
+	string choice;
+	do { cin >> choice;  cout << "You entered invalid key. Try again" << endl << ">>"; } while (choice != "1" && choice != "2" && choice != "3" && choice != "4");
+	if (choice == "1")//Validation check
+	{
+		system("cls");
+		cout << endl << endl << endl;
+		cout << "________________________________________________________________________________________________________________________" << endl;
+		cout << "________________________________________________________________________________________________________________________" << endl;
+		cout << endl;
+		cout << "                                                       -  DIARY -                                                       " << endl << endl;
+		cout << "                                       Choose the day where you want to add a new note                                  " << endl;
+		cout << "                                     Our calendar works from 1582-any year in the future                              " << endl;
+		cout << "                                       ***1582 year-the new calendar was implemented***                                    " << endl;
+		cout << "________________________________________________________________________________________________________________________" << endl;
+		cout << "________________________________________________________________________________________________________________________" << endl << endl << endl;
+		calendar();
+		cout << endl << "----------------------------------------------------------------------------------------------------------------------" << endl << endl;
+		cout << "                                                     Enter your notes : " << endl << "                                            In order to save your notes press TAB and the ENTER" << endl << ">>";
+		getline(cin, text, '	');
+		system("cls");
+		notes();
+	}
+	else if (choice == "2")
+	{
+		system("CLS");
+		notes();
+	}
+	else if (choice == "3")
+	{
+		system("CLS");
+		calendarmenu();
+	}
+	else if (choice == "4")
+	{
+		system("cls");
+		main();
+	}
+	else
+	{
+		cout << "You entered wrong number,try one more time : ";
+		cin >> choice;
+	}
+	textchoice();
+}
+void login()
+{//Checks the username and the password of a person
+	cout << endl << endl << endl;
+	cout << "________________________________________________________________________________________________________________________" << endl;
+	cout << "________________________________________________________________________________________________________________________" << endl;
+	cout << endl;
+	cout << "                                                         LOG IN                                                         " << endl;
+	cout << "                                               ---------------------------                                                ";
+	cout << "                             Registration is needed in order to guarantee safety of your notes                          " << endl;
+	cout << "________________________________________________________________________________________________________________________" << endl;
+	cout << "________________________________________________________________________________________________________________________" << endl;
+	cout << endl;
+	cout << endl;
+	cout << "                                                     PLEASE LOGIN                                                      " << endl << endl;
+	cout << "                                               ---------------------------                                                ";
+	cout << "                                                 NAME:    "; cin >> name; cout << "                                          " << endl;
+	cout << "                                               ---------------------------                                                ";
+	cout << "                                             PASSWORD:    "; cin >> pass; cout << "                                          " << endl;
+	cout << "                                               -----------------------------                                             ";
+	if (pass == password && name == username)
+	{
+		system("CLS");
+		diary();
+	}
+	else
+	{
+		do
+		{
+			system("CLS");
+			cout << "________________________________________________________________________________________________________________________" << endl;
+			cout << "________________________________________________________________________________________________________________________" << endl;
+			cout << endl;
+			cout << "                                                          OOPS!                                                         " << endl;
+			cout << "                                               ---------------------------                                                ";
+			cout << "                                       Invalid user name or password. Please try again.                          " << endl;
+			cout << "________________________________________________________________________________________________________________________" << endl;
+			cout << "________________________________________________________________________________________________________________________" << endl;
+			cout << endl;
+			cout << "                                               ---------------------------                                                ";
+			cout << "                                                 NAME:    "; cin >> name; cout << "                                          " << endl;
+			cout << "                                               ---------------------------                                                ";
+			cout << "                                             PASSWORD:    "; cin >> pass; cout << "                                          " << endl;
+			cout << "                                               -----------------------------                                             ";
+
+		} while (pass != password || name != username);
+		system("CLS");
+		diary();
+	}
+}
+int main()
+{
+	system("color f5"); //initializing console color
+	cout << endl << endl << endl;//Simple authenticaion
+	cout << "________________________________________________________________________________________________________________________" << endl;
+	cout << "________________________________________________________________________________________________________________________" << endl << endl;
+	cout << "                                                        MAIN MENU                                                       " << endl << endl;
+	cout << "        <        This is a secret dairy with calendar. Save your notes and  access your notes at any time!      >       " << endl << endl;
+	cout << "                                               ---------------------------                                                ";
+	cout << "                             Registration is needed in order to guarantee the safety of your notes                          " << endl;
+	cout << "________________________________________________________________________________________________________________________" << endl;
+	cout << "________________________________________________________________________________________________________________________" << endl << endl;
+	cout << "                                                     PLEASE REGISTER                                                      " << endl;
+	cout << "                                               ---------------------------                                                ";
+	cout << "                                                 NAME:    "; cin >> username; cout << "                                          " << endl;
+	cout << "                                               ---------------------------                                                ";
+	cout << "                                             PASSWORD:    "; cin >> password; cout << "                                          " << endl;
+	cout << "                                               -----------------------------                                             ";
+	system("CLS");
+	login();//Validation check
+}
+
