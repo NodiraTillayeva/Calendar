@@ -1,4 +1,8 @@
 # Calendar
 Simple University project on C++
-Contains yearly and monthly calendar modes
-Contains validation check
+This project contains:
+- Yearly and Monthly calendar modes
+- Validation check 
+- Function to add notes to a different dates
+
+You can find screenshots of our application in the project file
